@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  public checked!: boolean;
+
+  constructor(
+    private themeService: ThemeService,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -15,4 +22,15 @@ export class NavBarComponent implements OnInit {
   public logout(): void {
     // LOGOUT
   }
+
+  public onDarkModeSwitched(){
+    if(this.checked == true){
+      this.checked = false
+    } else {
+      this.checked = true
+    };
+    
+    this.themeService.updateData(this.checked);
+  }
+
 }

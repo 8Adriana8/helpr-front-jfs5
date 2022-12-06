@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    JwtModule
+    JwtModule,
+    ComponentsModule
   ],
   providers: [
     {
