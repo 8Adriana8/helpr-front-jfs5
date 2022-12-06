@@ -28,8 +28,33 @@ $helpr-front-theme: mat.define-light-theme((
   )
 ));
 
+
+// Criado por Mitchel
+$helpr-front-theme-dark: mat.define-dark-theme((
+  color: (
+    primary: $helpr-front-primary,
+    accent: $helpr-front-accent,
+    warn: $helpr-front-warn,
+  )
+));
+
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($helpr-front-theme);
+
+.theme-dark{
+  @include mat.all-component-themes($helpr-front-theme-dark);
+}
+
+.theme-light{
+  @include mat.all-component-themes($helpr-front-theme);
+}
+
+
+
+
+
+
+
 

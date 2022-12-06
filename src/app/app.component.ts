@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+
+import { Component, HostBinding } from '@angular/core';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,27 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'helpr-front';
+
+  private isDark!:boolean;
+
+  @HostBinding('class')
+  get theme(){
+    return this.isDark ? 'theme-dark' : 'theme-light'
+  }
+
+  constructor(
+    private themeService: ThemeService,
+  ) { }
+
+  ngOnInit(): void {
+    this.initDarkMode()
+  }
+
+  private initDarkMode(){
+    this.themeService.getData().subscribe(data => {
+      this.isDark = data;
+    })
+  }
+    
+
 }
