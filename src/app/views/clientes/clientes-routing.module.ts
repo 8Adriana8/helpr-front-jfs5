@@ -19,7 +19,7 @@ const routes: Routes = [
     component: EditClienteComponent
   },
   {
-    path: 'futuroClientes',
+    path: 'futuros-clientes',
     component: FuturoClientesComponent
   }
 ];
