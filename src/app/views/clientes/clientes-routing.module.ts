@@ -3,6 +3,7 @@ import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientesComponent } from './clientes/clientes.component';
+import { FuturoClientesComponent } from './futuro-clientes/futuro-clientes.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: EditClienteComponent
+  },
+  {
+    path: 'futuroClientes',
+    component: FuturoClientesComponent
   }
 ];
 
