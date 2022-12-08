@@ -2,6 +2,7 @@ import { ClienteService } from './../../../services/cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { ToastrService } from 'ngx-toastr';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-clientes',
@@ -11,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ClientesComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'editar', 'excluir'];
-  dataSource: Cliente[] = [];
+  dataSource:any = [];
 
   constructor(
     private clienteService: ClienteService,
@@ -24,7 +25,7 @@ export class ClientesComponent implements OnInit {
 
   private initializeTable(): void {
     this.clienteService.findAll().subscribe(clientes => {
-      this.dataSource = clientes;
+      this.dataSource = new MatTableDataSource(clientes);
     });
   }
 
@@ -37,4 +38,10 @@ export class ClientesComponent implements OnInit {
       });
     }
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }
