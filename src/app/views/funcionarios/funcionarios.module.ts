@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { FuncionariosRoutingModule } from './funcionarios-routing.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { NewfuncionarioComponent } from './new-funcionarios/new-funcionario.component';
+import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 
 @NgModule({
   declarations: [
       FuncionariosComponent, 
-      NewfuncionarioComponent
+      NewfuncionarioComponent, MeuPerfilComponent
     
     ],
   imports: [

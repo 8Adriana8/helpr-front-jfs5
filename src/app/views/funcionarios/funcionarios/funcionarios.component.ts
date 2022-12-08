@@ -12,7 +12,9 @@ export class FuncionariosComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir'];
   dataSource: Funcionario[] = [];
 
-  constructor(private FuncionarioService: FuncionarioService) { }
+  constructor(
+    private FuncionarioService: FuncionarioService
+    ) { }
 
   ngOnInit(): void {
     this.initializeTable();

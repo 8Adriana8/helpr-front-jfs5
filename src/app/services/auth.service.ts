@@ -24,6 +24,7 @@ export class AuthService {
     return this.http.post<Token>(`${API_CONFIG.baseUrl}/auth/login`, credenciais).pipe(
       tap(token => {
         localStorage.setItem("token", token.accessToken);
+        localStorage.setItem("email", credenciais.email);
       }),
       catchError(error => {
         this.toastr.error("Erro ao autenticar!");
