@@ -20,6 +20,7 @@ const routes: Routes = [
     path: 'chamados',
     loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule)
   },
+  { path: 'cargos', loadChildren: () => import('./views/cargos/cargos.module').then(m => m.CargosModule) },
 ];
 
 @NgModule({
