@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
+
 const routes: Routes = [
   {
     path: 'login',
@@ -20,7 +21,19 @@ const routes: Routes = [
     path: 'chamados',
     loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule)
   },
+
   { path: 'faq', loadChildren: () => import('./views/faq/faq.module').then(m => m.FaqModule) },
+
+
+  { path: 'cargos', loadChildren: () => import('./views/cargos/cargos.module').then(m => m.CargosModule) 
+},
+
+  {
+    path: 'funcionarios',
+    loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule)
+  }
+
+
 ];
 
 @NgModule({

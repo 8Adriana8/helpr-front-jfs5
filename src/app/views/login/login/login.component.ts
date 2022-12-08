@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,16 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
 
   public formLogin: FormGroup;
+  public rememberMe!: boolean;
+  public email!: string;
+  public senha!: string;
 
   constructor(
     formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private cookie: CookieService,
   ) {
     this.formLogin = formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
@@ -27,12 +32,23 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadPage();
   }
 
   public signIn(): void {
     if(this.formLogin.valid) {
       // PROCESSO DE AUTENTICAR
       const credenciais: Credenciais = this.formLogin.value;
+
+      if(this.rememberMe == true){
+        this.cookie.set('email', credenciais.email);
+        this.cookie.set('senha', credenciais.senha);
+        this.cookie.set('rememberMe', this.rememberMe.toString());
+      } else if(this.rememberMe == false){
+        this.cookie.delete('email');
+        this.cookie.delete('senha');
+        this.cookie.delete('rememberMe');
+      }
       this.authService.authenticate(credenciais).subscribe(response => {
         this.toastr.success("Bem-vindo(a)!");
         this.router.navigate(["/home"]);
@@ -42,4 +58,21 @@ export class LoginComponent implements OnInit {
       this.toastr.error("Dados inválidos.");
     }
   }
+
+  public loadPage(){
+    if(this.cookie.check('email')){
+      this.email = this.cookie.get('email');
+      this.senha = this.cookie.get('senha');
+      this.rememberMe = this.cookie.get('rememberMe') == 'true';
+    }
+  }
+
+  public rememberMeCheck(){
+    if(this.rememberMe == true){
+      this.rememberMe = false
+    } else {
+      this.rememberMe = true
+    }
+  }
+
 }
