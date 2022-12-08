@@ -9,7 +9,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ComponentsModule } from './components/components.module';
 import { ToastrModule } from 'ngx-toastr';
+
 import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -29,14 +33,15 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
       timeOut: 4000,
       progressBar: true,
       closeButton: true
-    })
+    }),
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    CookieService,
   ],
   bootstrap: [AppComponent]
 })
