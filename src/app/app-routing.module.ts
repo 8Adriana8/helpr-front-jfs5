@@ -22,6 +22,9 @@ const routes: Routes = [
     loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule)
   },
 
+  { path: 'faq', loadChildren: () => import('./views/faq/faq.module').then(m => m.FaqModule) },
+
+
   { path: 'cargos', loadChildren: () => import('./views/cargos/cargos.module').then(m => m.CargosModule) 
 },
 
@@ -29,6 +32,7 @@ const routes: Routes = [
     path: 'funcionarios',
     loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule)
   }
+
 
 ];
 
