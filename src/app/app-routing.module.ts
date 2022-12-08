@@ -20,6 +20,7 @@ const routes: Routes = [
     path: 'chamados',
     loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule)
   },
+  { path: 'faq', loadChildren: () => import('./views/faq/faq.module').then(m => m.FaqModule) },
 ];
 
 @NgModule({
