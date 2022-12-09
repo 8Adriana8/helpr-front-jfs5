@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Cargo } from 'src/app/models/cargo';
 import { CargoService } from 'src/app/services/cargo.service';
 
@@ -9,10 +11,15 @@ import { CargoService } from 'src/app/services/cargo.service';
 })
 export class CargosComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nome', 'descricao', 'salario', 'editar', 'excluir'];
-  dataSource: Cargo[] = [];
+  public displayedColumns: string[] = ['id', 'nome', 'descricao', 'salario', 'editar', 'excluir'];
+  public dataSource!: MatTableDataSource<Cargo>;
 
-  constructor(private cargoService: CargoService) { }
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  constructor(
+    private cargoService: CargoService
+    ) { }
 
   ngOnInit(): void {
     this.initializeTables()
@@ -20,9 +27,18 @@ export class CargosComponent implements OnInit {
 
   public initializeTables(){
     return this.cargoService.findAll().subscribe(cargos => {
-      this.dataSource = cargos
+      this.dataSource = new MatTableDataSource(cargos);
+      this.dataSource.paginator = this.paginator;
     })
   }
 
   public delete(id: number): void {}
+
+  public applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }

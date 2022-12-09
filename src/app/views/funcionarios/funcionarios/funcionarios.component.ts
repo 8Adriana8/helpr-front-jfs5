@@ -1,6 +1,9 @@
 import { FuncionarioService } from './../../../services/funcionario.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Funcionario } from 'src/app/models/funcionario';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-funcionarios',
@@ -9,11 +12,15 @@ import { Funcionario } from 'src/app/models/funcionario';
 })
 export class FuncionariosComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir'];
-  dataSource: Funcionario[] = [];
+  public displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir'];
+  public dataSource!: MatTableDataSource<Funcionario>;
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
   constructor(
-    private FuncionarioService: FuncionarioService
+    private FuncionarioService: FuncionarioService,
+    private toastr: ToastrService,
     ) { }
 
   ngOnInit(): void {
@@ -22,17 +29,26 @@ export class FuncionariosComponent implements OnInit {
 
   private initializeTable(): void {
     this.FuncionarioService.findAll().subscribe(funcionarios => {
-      this.dataSource = funcionarios;
+      this.dataSource = new MatTableDataSource(funcionarios);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
   public delete(id: number): void {
-    let ok = confirm("Tem certeza que deseja excluir?");
+    let ok = this.toastr.warning("Tem certeza que deseja excluir?");
     if(ok) {
       this.FuncionarioService.delete(id).subscribe(() => {
-        alert("funcionario excluido.");
+        this.toastr.success("funcionario excluido.");
         this.initializeTable();
       });
+    }
+  }
+
+  public applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
     }
   }
 }
