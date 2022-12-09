@@ -1,4 +1,4 @@
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Observable, EMPTY } from 'rxjs';
 import { Funcionario } from 'src/app/models/funcionario';
 import { API_CONFIG } from './../config/api.config';
@@ -68,5 +68,20 @@ export class FuncionarioService {
         return EMPTY;
       })
     );
+  }
+
+  public findByEmail(email: string): Observable<Funcionario>{
+    return this.http.get<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/email/${email}`).pipe(
+      catchError(error => {
+        alert("Erro ao procurar funcionario por e-mail.");
+        console.error(error);
+        return EMPTY;
+      }),
+      tap(funcionario => {
+        console.log("aqui",funcionario)
+      })
+    );
+  
+    
   }
 }
