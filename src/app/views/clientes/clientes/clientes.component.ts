@@ -18,10 +18,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class ClientesComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone','detalhes', 'editar', 'excluir'];
-  dataSource:any = [];
-
-  public displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'editar', 'excluir'];
+  public displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'detalhes', 'editar', 'excluir'];
   public dataSource!: MatTableDataSource<Cliente>;
 
   @ViewChild(MatPaginator)
