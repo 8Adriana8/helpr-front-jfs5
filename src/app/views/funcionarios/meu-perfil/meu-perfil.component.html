@@ -1,0 +1,43 @@
+<app-nav-bar>
+  <ng-container>
+    <div class="dialog-container">
+      <h1><strong>Meu Perfil</strong></h1>
+      <img
+        src="data:image/jpeg;base64,{{funcionario.foto}}"
+        alt="Avatar"
+      />
+      <mat-card-title class="center">{{ funcionario.nome }}</mat-card-title>
+
+      <div class="double-width">
+        <mat-card>
+          <mat-card-title>Perfil</mat-card-title>
+          <mat-card-content>{{ funcionario.perfil }}</mat-card-content>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-title>Cargo</mat-card-title>
+          <mat-card-content>{{ funcionario.cargo.nome }}</mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-title>E-mail</mat-card-title>
+          <mat-card-content>{{ funcionario.email }}</mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="double-width">
+        <mat-card>
+          <mat-card-title>Cargo</mat-card-title>
+          <mat-card-content>{{ funcionario.cargo.descricao }}</mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-title>CPF</mat-card-title>
+          <mat-card-content mask="999.999.999-99">{{ funcionario.cpf }}</mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-title>Remuneração(R$)</mat-card-title>
+          <mat-card-content>{{ funcionario.cargo.salario }}</mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </ng-container>
+</app-nav-bar>

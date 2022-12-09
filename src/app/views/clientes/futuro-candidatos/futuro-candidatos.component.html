@@ -1,7 +1,7 @@
 <app-nav-bar>
     <ng-container>
         <div class="container-title">
-            <h2>Funcionarios</h2>
+            <h2>Futuros Candidatos</h2>
             <a mat-mini-fab color="primary" routerLink="new">
                 <i class="material-icons">add</i>
             </a>
@@ -11,37 +11,37 @@
             <mat-label>Filter</mat-label>
             <input matInput (keyup)="applyFilter($event)">
         </mat-form-field>
-        
+
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> Id </th>
-                <td mat-cell *matCellDef="let funcionario"> {{funcionario.id}} </td>
+                <td mat-cell *matCellDef="let candidatos"> {{candidatos.idCandidato}} </td>
             </ng-container>
 
             <ng-container matColumnDef="nome">
                 <th mat-header-cell *matHeaderCellDef> Nome </th>
-                <td mat-cell *matCellDef="let funcionario"> {{funcionario.nome}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="cpf">
-                <th mat-header-cell *matHeaderCellDef> CPF </th>
-                <td mat-cell *matCellDef="let funcionario"> {{funcionario.cpf}} </td>
+                <td mat-cell *matCellDef="let candidatos"> {{candidatos.nomeCompleto}} </td>
             </ng-container>
 
             <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef> E-mail </th>
-                <td mat-cell *matCellDef="let funcionario"> {{funcionario.email}} </td>
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let candidatos"> {{candidatos.email}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="cargo">
-                <th mat-header-cell *matHeaderCellDef> Cargo </th>  
-                <td mat-cell *matCellDef="let funcionario"> {{funcionario.cargo.nome}} </td>
+            <ng-container matColumnDef="descricaoHabilidades">
+                <th mat-header-cell *matHeaderCellDef> Habilidades </th>
+                <td mat-cell *matCellDef="let candidatos"> {{candidatos.descricaoHabilidades}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="setor">
+                <th mat-header-cell *matHeaderCellDef> Setor </th>
+                <td mat-cell *matCellDef="let candidatos"> {{candidatos.setor}} </td>
             </ng-container>
 
             <ng-container matColumnDef="editar">
                 <th mat-header-cell *matHeaderCellDef> Editar </th>
-                <td mat-cell *matCellDef="let funcionario">
-                    <a mat-icon-button [routerLink]="['edit', funcionario.id]">
+                <td mat-cell *matCellDef="let candidatos">
+                    <a mat-icon-button [routerLink]="['edit', candidatos.id]">
                         <i class="material-icons">edit</i>
                     </a>
                 </td>
@@ -49,8 +49,8 @@
 
             <ng-container matColumnDef="excluir">
                 <th mat-header-cell *matHeaderCellDef> Excluir </th>
-                <td mat-cell *matCellDef="let funcionario">
-                    <button mat-icon-button (click)="delete(funcionario.id)">
+                <td mat-cell *matCellDef="let candidatos">
+                    <button mat-icon-button (click)="delete(candidatos.id)">
                         <i class="material-icons">delete</i>
                     </button>
                 </td>

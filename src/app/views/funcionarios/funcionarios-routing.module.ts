@@ -3,6 +3,7 @@ import { NewfuncionarioComponent } from './new-funcionarios/new-funcionario.comp
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'new',
     component: NewfuncionarioComponent
+  },
+  {
+    path: 'perfil',
+    component: MeuPerfilComponent
   },
 ];
 

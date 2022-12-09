@@ -1,10 +1,14 @@
 import { ClienteService } from './../../../services/cliente.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
+
 import { MatDialog } from '@angular/material/dialog';
 import { DetailsComponent } from 'src/app/components/details/details.component';
+
+import { MatPaginator } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-clientes',
@@ -13,8 +17,16 @@ import { DetailsComponent } from 'src/app/components/details/details.component';
 })
 export class ClientesComponent implements OnInit {
 
+
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone','detalhes', 'editar', 'excluir'];
   dataSource:any = [];
+
+  public displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'editar', 'excluir'];
+  public dataSource!: MatTableDataSource<Cliente>;
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
 
   constructor(
     private clienteService: ClienteService,
@@ -29,6 +41,7 @@ export class ClientesComponent implements OnInit {
   private initializeTable(): void {
     this.clienteService.findAll().subscribe(clientes => {
       this.dataSource = new MatTableDataSource(clientes);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
@@ -42,9 +55,12 @@ export class ClientesComponent implements OnInit {
     }
   }
 
-  applyFilter(event: Event) {
+  public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
   public openDetails(cliente: Cliente): void {
     this.dialog.open(DetailsComponent, {

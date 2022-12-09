@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FuturoClientesComponent } from './futuro-clientes/futuro-clientes.component';
+import { FuturoCandidatosComponent } from './futuro-candidatos/futuro-candidatos.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'futuros-clientes',
     component: FuturoClientesComponent
+  },
+  {
+    path: 'futuros-candidatos',
+    component: FuturoCandidatosComponent
   }
 ];
 
