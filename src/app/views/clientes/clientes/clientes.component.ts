@@ -19,6 +19,7 @@ export class ClientesComponent implements OnInit {
 
 
   public displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'detalhes', 'editar', 'excluir'];
+
   public dataSource!: MatTableDataSource<Cliente>;
 
   @ViewChild(MatPaginator)

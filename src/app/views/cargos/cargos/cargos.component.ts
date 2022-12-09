@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { DetailsCargoComponent } from 'src/app/components/details-cargo/details-cargo.component';
 import { Cargo } from 'src/app/models/cargo';
 import { CargoService } from 'src/app/services/cargo.service';
 
@@ -11,14 +13,15 @@ import { CargoService } from 'src/app/services/cargo.service';
 })
 export class CargosComponent implements OnInit {
 
-  public displayedColumns: string[] = ['id', 'nome', 'descricao', 'salario', 'editar', 'excluir'];
+  public displayedColumns: string[] = ['id', 'nome', 'descricao', 'salario', 'detalhes', 'editar', 'excluir'];
   public dataSource!: MatTableDataSource<Cargo>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
   constructor(
-    private cargoService: CargoService
+    private cargoService: CargoService,
+    private dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -40,5 +43,12 @@ export class CargosComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  public openDetails(cargo: Cargo): void{
+    this.dialog.open(DetailsCargoComponent, {
+      width: "400px",
+      data: cargo
+    });
   }
 }
