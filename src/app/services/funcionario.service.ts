@@ -81,7 +81,11 @@ export class FuncionarioService {
         console.log("aqui",funcionario)
       })
     );
-  
-    
   }
+
+
+
+
+
 }
+
