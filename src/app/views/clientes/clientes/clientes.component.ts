@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { DetailsComponent } from 'src/app/components/details/details.component';
 
 @Component({
   selector: 'app-clientes',
@@ -11,12 +13,13 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ClientesComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'editar', 'excluir'];
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone','detalhes', 'editar', 'excluir'];
   dataSource:any = [];
 
   constructor(
     private clienteService: ClienteService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -43,5 +46,10 @@ export class ClientesComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
+  public openDetails(cliente: Cliente): void {
+    this.dialog.open(DetailsComponent, {
+      width: "400px",
+      data: cliente
+    });
+}
 }
