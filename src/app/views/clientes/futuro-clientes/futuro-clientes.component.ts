@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { FuturoCliente } from 'src/app/models/futuro-cliente';
 import { FuturoClienteService } from 'src/app/services/futuro-cliente.service';
@@ -10,10 +11,16 @@ import { FuturoClienteService } from 'src/app/services/futuro-cliente.service';
 })
 export class FuturoClientesComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'editar', 'excluir'];
-  dataSource: any = [];
+  public displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'editar', 'excluir'];
 
-  constructor(private futuroClienteService: FuturoClienteService) { }
+  public dataSource!: MatTableDataSource<FuturoCliente>;
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  constructor(
+    private futuroClienteService: FuturoClienteService,
+    ) { }
 
   ngOnInit(): void {
     this.initializeTable()
@@ -22,6 +29,7 @@ export class FuturoClientesComponent implements OnInit {
   public initializeTable(){
     this.futuroClienteService.findAll().subscribe(fclientes => {
       this.dataSource = new MatTableDataSource(fclientes);
+      this.dataSource.paginator = this.paginator;
     })
   }
 
@@ -29,9 +37,12 @@ export class FuturoClientesComponent implements OnInit {
 
   }
 
-  applyFilter(event: Event) {
+  public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 

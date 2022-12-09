@@ -1,7 +1,8 @@
 import { ChamadoService } from './../../../services/chamado.service';
 import { Chamado } from './../../../models/chamado';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-chamados',
@@ -10,9 +11,12 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ChamadosComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'titulo', 'cliente', 'funcionario', 'dataAbertura', 'status', 'editar', 'detalhes'];
+  public displayedColumns: string[] = ['id', 'titulo', 'cliente', 'funcionario', 'dataAbertura', 'status', 'editar', 'detalhes'];
 
-  dataSource:any = [];
+  public dataSource!: MatTableDataSource<Chamado>;
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
   constructor(
     private chamadoService: ChamadoService
@@ -24,13 +28,17 @@ export class ChamadosComponent implements OnInit {
 
   private initializeTable(): void {
     this.chamadoService.findAll().subscribe(chamados => {
-      this.dataSource = new MatTableDataSource(chamados) ;
+      this.dataSource = new MatTableDataSource(chamados);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }
