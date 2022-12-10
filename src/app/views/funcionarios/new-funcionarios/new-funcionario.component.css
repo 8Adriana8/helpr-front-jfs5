@@ -11,3 +11,13 @@ form button {
 .margin {
     margin-right: 15px;
 }
+
+.upload-photo {
+    width: 96%;
+    padding: 10px 20px;
+    border: 1px solid rgba(160, 160, 160, 0.767);
+}
+
+.half-width{
+    width: 50%;
+}
