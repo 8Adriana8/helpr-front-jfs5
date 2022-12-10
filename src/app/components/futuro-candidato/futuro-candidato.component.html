@@ -1,0 +1,81 @@
+<div class="dialog-container">
+    <button mat-icon-button mat-dialog-close>
+        <i class="material-icons">close</i>
+    </button>
+    <mat-stepper headerPosition="top" #stepper>
+        <mat-step [stepControl]="formFuturoCandidato">
+            <form [formGroup]="formFuturoCandidato">
+                <ng-template matStepLabel>Preencha o seu nome e email</ng-template>
+                <div class="dual-input full-width">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nome</mat-label>
+                        <input matInput placeholder="Gabriel Braga" formControlName="nomeCompleto" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="gabriel@email.com" formControlName="email" required>
+                    </mat-form-field>
+                </div>
+                <div class="botao-next">
+                    <button class="full-width" mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="formFuturoCandidato">
+            <form [formGroup]="formFuturoCandidato">
+                <ng-template matStepLabel>Descrição de habilidades</ng-template>
+                <div class="dual-input full-width">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Habilidades</mat-label>
+                        <input matInput formControlName="descricaoHabilidades" required>
+                    </mat-form-field>
+                    <ng-template matStepLabel>Setor</ng-template>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Setor</mat-label>
+                        <mat-select formControlName="setor">
+                            <mat-option *ngFor="let setor of setor" [value]="setor">
+                                {{setorMaping[setor]}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="dual-button">
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext (click)="create()">Cadastrar</button>
+                </div>
+            </form>
+        </mat-step>
+    </mat-stepper>
+
+    <!-- <button mat-icon-button mat-dialog-close class="botao">
+        <i class="material-icons">close</i>
+    </button>
+       <form [formGroup]="formFuturoCandidato">
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input type="text" name="nomeCompleto" matInput placeholder="Ex. Gabriel Braga" formControlName="nomeCompleto">
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input type="text" name="email" matInput placeholder="Ex. gabriel@email.com" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Descrição de Habilidades</mat-label>
+            <input type="text" name="descricaoHabilidades" matInput formControlName="descricaoHabilidades">
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Setor</mat-label>
+            <mat-select formControlName="setor">
+                <mat-option *ngFor="let setor of setor" [value]="setor">
+                  {{setorMaping[setor]}}
+                </mat-option>
+                </mat-select>
+        </mat-form-field>
+        <button class="full-width botao" mat-raised-button (click)="create()">Cadastrar</button>
+       </form> -->
+
+</div>
