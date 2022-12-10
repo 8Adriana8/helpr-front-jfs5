@@ -21,4 +21,21 @@ export class FuturoCandidatoService {
       })
     )
   }
+
+  public create(fCandidato: FuturoCandidato): Observable<FuturoCandidato> {
+    const data = {
+      nomeCompleto: fCandidato.nomeCompleto,
+      email: fCandidato.email,
+      descricaoHabilidades: fCandidato.descricaoHabilidades,
+      setor: fCandidato.setor
+    }
+
+    return this.http.post<FuturoCandidato>(`${API_CONFIG.baseUrl}/candidatos`, data).pipe(
+      catchError(error => {
+        this.toastr.error("Erro ao criar Futuro Candidato")
+        console.error(error)
+        return EMPTY
+      })
+    )
+  }
 }

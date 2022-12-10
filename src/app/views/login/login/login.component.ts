@@ -5,6 +5,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
+import { FuturoCandidato } from 'src/app/models/futuro-candidato';
+import { FuturoCandidatoComponent } from 'src/app/components/futuro-candidato/futuro-candidato.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +27,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private cookie: CookieService,
+    private dialog: MatDialog
   ) {
     this.formLogin = formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
@@ -73,6 +77,12 @@ export class LoginComponent implements OnInit {
     } else {
       this.rememberMe = true
     }
+  }
+
+  public openCadastro(){
+    this.dialog.open(FuturoCandidatoComponent, {
+      width: "900px",
+    })
   }
 
 }

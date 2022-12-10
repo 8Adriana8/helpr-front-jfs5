@@ -1,0 +1,37 @@
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 700px;
+    background-color: white;
+    border-radius: 30px;
+    
+}
+.dialog-container h3 {
+    text-align: center;
+    font-size: 20px;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.botao-next {
+    margin-top: 30px;
+}
+
+.dual-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.dual-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+mat-option {
+    background-color: #FFFFFFFF;
+}
