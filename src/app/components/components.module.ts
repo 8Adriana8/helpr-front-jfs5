@@ -7,6 +7,7 @@ import { DetailsComponent } from './details/details.component';
 import { DetailsCargoComponent } from './details-cargo/details-cargo.component';
 import { FuturoCandidatoComponent } from './futuro-candidato/futuro-candidato.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FuturoClienteComponent } from './futuro-cliente/futuro-cliente.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavBarComponent,
     DetailsComponent,
     DetailsCargoComponent,
-    FuturoCandidatoComponent
+    FuturoCandidatoComponent,
+    FuturoClienteComponent
   ],
   imports: [
     CommonModule,

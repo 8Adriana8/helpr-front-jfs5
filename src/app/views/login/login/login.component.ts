@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { FuturoCandidato } from 'src/app/models/futuro-candidato';
 import { FuturoCandidatoComponent } from 'src/app/components/futuro-candidato/futuro-candidato.component';
 import { MatDialog } from '@angular/material/dialog';
+import { FuturoClienteComponent } from 'src/app/components/futuro-cliente/futuro-cliente.component';
 
 @Component({
   selector: 'app-login',
@@ -82,6 +83,12 @@ export class LoginComponent implements OnInit {
   public openCadastro(){
     this.dialog.open(FuturoCandidatoComponent, {
       width: "900px",
+    })
+  }
+
+  public openCadastroCliente(){
+    this.dialog.open(FuturoClienteComponent, {
+      width: "900px"
     })
   }
 
