@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
 import { FuturoCliente } from 'src/app/models/futuro-cliente';
 import { FuturoClienteService } from 'src/app/services/futuro-cliente.service';
 
@@ -20,6 +21,7 @@ export class FuturoClientesComponent implements OnInit {
 
   constructor(
     private futuroClienteService: FuturoClienteService,
+    private toastr: ToastrService
     ) { }
 
   ngOnInit(): void {
@@ -33,8 +35,11 @@ export class FuturoClientesComponent implements OnInit {
     })
   }
 
-  public delete(id: number){
-
+  public delete(id: number): void {
+    this.futuroClienteService.delete(id).subscribe(() => {
+      this.toastr.success("Futuro Cliente deletado com sucesso")
+      this.initializeTable()
+    })
   }
 
   public applyFilter(event: Event) {

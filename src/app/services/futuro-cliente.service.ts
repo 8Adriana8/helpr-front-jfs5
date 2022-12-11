@@ -33,4 +33,14 @@ export class FuturoClienteService {
       })
     )
   }
+
+  public delete(id: number): Observable<FuturoCliente> {
+    return this.http.delete<FuturoCliente>(`${API_CONFIG.baseUrl}/clientes/futuros-clientes/${id}`).pipe(
+      catchError(error => {
+        this.toastr.error("Erro ao deletar futuro cliente")
+        console.error(error)
+        return EMPTY
+      })
+    )
+  }
 }
