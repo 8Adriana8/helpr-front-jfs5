@@ -3,11 +3,12 @@ import { MaterialModule } from './../../shared/material/material.module';
 import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask'
 import { FuncionariosRoutingModule } from './funcionarios-routing.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { NewfuncionarioComponent } from './new-funcionarios/new-funcionario.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxMaskModule.forChild()
+    NgxMaskModule.forChild(),
+    NgxMatFileInputModule,
   ]
 })
 export class FuncionariosModule { }

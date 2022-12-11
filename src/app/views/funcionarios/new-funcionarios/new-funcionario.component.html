@@ -28,13 +28,14 @@
                 </mat-select>
           </mat-form-field>
 
-            
-                 <mat-label>Foto</mat-label>               
-                <input type="" name="foto" matInput formControlName="foto">
-           
+            <div class="half-width">
+                <input type="file" value="foto" class="upload-photo" (change)="uploadFile($event)"/>
+            </div>
+
 
             <button type="submit" mat-raised-button color="primary" (click)="create()">Cadastrar</button>
             <a type="button" mat-raised-button color="warn" routerLink="/funcionarios">Cancelar</a>
+
         </form>
     </ng-container>
 </app-nav-bar>

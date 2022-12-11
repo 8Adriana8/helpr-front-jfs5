@@ -3,6 +3,8 @@ import { Chamado } from './../../../models/chamado';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { DetailsChamadoComponent } from 'src/app/components/details-chamado/details-chamado.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-chamados',
@@ -19,7 +21,8 @@ export class ChamadosComponent implements OnInit {
   paginator!: MatPaginator;
 
   constructor(
-    private chamadoService: ChamadoService
+    private chamadoService: ChamadoService,
+    private dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -39,6 +42,13 @@ export class ChamadosComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  public openDetails(chamado: Chamado): void{
+   this.dialog.open(DetailsChamadoComponent, {
+     width: "550px",
+      data: chamado
+   });
   }
 
 }

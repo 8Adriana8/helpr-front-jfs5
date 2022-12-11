@@ -38,7 +38,8 @@ export class FuncionarioService {
       email: funcionario.email,
       cpf: funcionario.cpf,
       senha: funcionario.senha,
-      idCargo: funcionario.cargo.idCargo
+      idCargo: funcionario.cargo.idCargo,
+      foto: funcionario.foto
     }
 
     return this.http.post<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios`, data).pipe(
