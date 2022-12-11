@@ -7,7 +7,9 @@ import { DetailsComponent } from './details/details.component';
 import { DetailsCargoComponent } from './details-cargo/details-cargo.component';
 import { FuturoCandidatoComponent } from './futuro-candidato/futuro-candidato.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FuturoClienteComponent } from './futuro-cliente/futuro-cliente.component';
 import { DetailsChamadoComponent } from './details-chamado/details-chamado.component';
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { DetailsChamadoComponent } from './details-chamado/details-chamado.compo
     NavBarComponent,
     DetailsComponent,
     DetailsCargoComponent,
-    FuturoCandidatoComponent
+    FuturoClienteComponent,
+    FuturoCandidatoComponent,
     DetailsChamadoComponent
 
   ],

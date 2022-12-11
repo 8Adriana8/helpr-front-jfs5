@@ -3,17 +3,17 @@
         <i class="material-icons">close</i>
     </button>
     <mat-stepper headerPosition="top" #stepper>
-        <mat-step [stepControl]="formFuturoCandidato">
-            <form [formGroup]="formFuturoCandidato">
-                <ng-template matStepLabel>Preencha o seu nome e email</ng-template>
+        <mat-step [stepControl]="formFuturoCliente">
+            <form [formGroup]="formFuturoCliente">
+                <ng-template matStepLabel>Preencha o seu nome e telefone</ng-template>
                 <div class="dual-input full-width">
                     <mat-form-field appearance="fill">
                         <mat-label>Nome</mat-label>
-                        <input matInput placeholder="Gabriel Braga" formControlName="nomeCompleto" required>
+                        <input name="nome" matInput placeholder="Gabriel Braga" formControlName="nome" required>
                     </mat-form-field>
                     <mat-form-field appearance="fill">
-                        <mat-label>Email</mat-label>
-                        <input matInput placeholder="gabriel@email.com" formControlName="email" required>
+                        <mat-label>Telefone</mat-label>
+                        <input type="tel" name="telefone" matInput placeholder="(00)000000-00" formControlName="telefone" required>
                     </mat-form-field>
                 </div>
                 <div class="botao-next">
@@ -21,22 +21,17 @@
                 </div>
             </form>
         </mat-step>
-        <mat-step [stepControl]="formFuturoCandidato">
-            <form [formGroup]="formFuturoCandidato">
-                <ng-template matStepLabel>Descrição de habilidades</ng-template>
+        <mat-step [stepControl]="formFuturoCliente">
+            <form [formGroup]="formFuturoCliente">
+                <ng-template matStepLabel>E-mail e CPF</ng-template>
                 <div class="dual-input full-width">
                     <mat-form-field appearance="fill">
-                        <mat-label>Habilidades</mat-label>
-                        <input matInput formControlName="descricaoHabilidades" required>
+                        <mat-label>E-mail</mat-label>
+                        <input type="email" name="email" matInput formControlName="email" required>
                     </mat-form-field>
-                    <ng-template matStepLabel>Setor</ng-template>
                     <mat-form-field appearance="fill">
-                        <mat-label>Setor</mat-label>
-                        <mat-select formControlName="setor">
-                            <mat-option *ngFor="let setor of setor" [value]="setor">
-                                {{setorMaping[setor]}}
-                            </mat-option>
-                        </mat-select>
+                        <mat-label>CPF</mat-label>
+                        <input name="cpf" matInput formControlName="cpf" required>
                     </mat-form-field>
                 </div>
 
