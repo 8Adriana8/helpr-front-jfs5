@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FuncionariosComponent implements OnInit {
 
-  public displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir'];
+  public displayedColumns: string[] = ['id', 'foto', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir'];
   public dataSource!: MatTableDataSource<Funcionario>;
 
   @ViewChild(MatPaginator)
