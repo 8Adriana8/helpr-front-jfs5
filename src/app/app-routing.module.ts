@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
+import { FuncionarioGuard } from './guards/funcionario.guard';
 
 
 const routes: Routes = [
@@ -15,25 +17,30 @@ const routes: Routes = [
   },
   {
     path: 'clientes',
-    loadChildren: () => import('./views/clientes/clientes.module').then(m => m.ClientesModule)
+    loadChildren: () => import('./views/clientes/clientes.module').then(m => m.ClientesModule),
+    canActivate: [ FuncionarioGuard ]
   },
   {
     path: 'chamados',
-    loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule)
+    loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule),
+    canActivate: [ FuncionarioGuard ]
   },
 
-  { path: 'faq', loadChildren: () => import('./views/faq/faq.module').then(m => m.FaqModule) },
+  { path: 'faq', 
+    loadChildren: () => import('./views/faq/faq.module').then(m => m.FaqModule),
+  },
 
-
-  { path: 'cargos', loadChildren: () => import('./views/cargos/cargos.module').then(m => m.CargosModule) 
-},
+  { 
+    path: 'cargos',
+    loadChildren: () => import('./views/cargos/cargos.module').then(m => m.CargosModule),
+    canActivate: [ AdminGuard ] 
+  },
 
   {
     path: 'funcionarios',
-    loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule)
+    loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule),
+    canActivate: [ AdminGuard ]
   }
-
-
 ];
 
 @NgModule({

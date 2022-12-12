@@ -23,8 +23,15 @@ export class AuthService {
   public authenticate(credenciais: Credenciais): Observable<Token> {
     return this.http.post<Token>(`${API_CONFIG.baseUrl}/auth/login`, credenciais).pipe(
       tap(token => {
+        let tokenString = token.accessToken.toString()
+        let tokenJwtData = tokenString.split('.')[1]
+        let decodedTokenJwtData = window.atob(tokenJwtData)
+        let decodedTokenRole = JSON.parse(decodedTokenJwtData)
+        let role = decodedTokenRole.perfil
+
         localStorage.setItem("token", token.accessToken);
         localStorage.setItem("email", credenciais.email);
+        localStorage.setItem("perfil", role)
       }),
       catchError(error => {
         this.toastr.error("Erro ao autenticar!");
