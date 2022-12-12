@@ -3,5 +3,5 @@ export interface Cargo {
     nome: string
     descricao: string
     salario: number
-    limiteFuncionario: number
+    limiteFuncionario?: number
 }

@@ -24,6 +24,17 @@ export class CargoService {
       })
     )
   }
+
+  public findById(idCargo: number): Observable<Cargo>{
+    return this.http.get<Cargo>(`${API_CONFIG.baseUrl}/cargos/${idCargo}`).pipe(
+      catchError(error => {
+        this.toastr.error("Erro ao buscar cargo")
+        console.error(error)
+        return EMPTY
+      })
+    )
+  }
+
   public create(cargo: Cargo): Observable<Cargo> {
     return this.http.post<Cargo>(`${API_CONFIG.baseUrl}/cargos`, cargo).pipe(
       catchError(error => {
@@ -33,6 +44,17 @@ export class CargoService {
       })
     )
 }
+
+public update(cargo: Cargo): Observable<Cargo> {
+  return this.http.put<Cargo>(`${API_CONFIG.baseUrl}/cargos/${cargo.idCargo}`, cargo).pipe(
+    catchError(error => {
+      this.toastr.error("Erro ao editar cliente.");
+      console.error(error);
+      return EMPTY;
+    })
+  );
+}
+
 public delete(id: number): Observable<Cargo> {
   return this.http.delete<Cargo>(`${API_CONFIG.baseUrl}/cargos/${id}`).pipe(
     catchError(error => {
