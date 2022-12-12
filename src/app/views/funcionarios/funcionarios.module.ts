@@ -9,11 +9,14 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { NewfuncionarioComponent } from './new-funcionarios/new-funcionario.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+import { AvatarPipe } from 'src/app/pipes/avatar.pipe';
 
 @NgModule({
   declarations: [
       FuncionariosComponent, 
-      NewfuncionarioComponent, MeuPerfilComponent
+      NewfuncionarioComponent, 
+      MeuPerfilComponent,
+      AvatarPipe,
     
     ],
   imports: [
