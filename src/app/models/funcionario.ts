@@ -1,4 +1,5 @@
 import { Cargo } from "./cargo";
+import { Perfil } from "./enums/perfil";
 
 export interface Funcionario {
     id?: number;
@@ -8,5 +9,5 @@ export interface Funcionario {
     senha?: string;
     cargo: Cargo;
     foto?: string;
-    perfil?: string;
+    perfil?: Perfil;
 }
