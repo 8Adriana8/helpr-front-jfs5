@@ -19,8 +19,8 @@ export class ClientesComponent implements OnInit {
 
 
   public displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'detalhes', 'editar', 'excluir'];
-
   public dataSource!: MatTableDataSource<Cliente>;
+  public showSpinner: boolean = false;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -37,10 +37,14 @@ export class ClientesComponent implements OnInit {
   }
 
   private initializeTable(): void {
+    this.showSpinner = true;
+    setTimeout(() => {
     this.clienteService.findAll().subscribe(clientes => {
       this.dataSource = new MatTableDataSource(clientes);
+      this.showSpinner = false;
       this.dataSource.paginator = this.paginator;
     });
+  }, 5000);
   }
 
   public delete(id: number): void {
