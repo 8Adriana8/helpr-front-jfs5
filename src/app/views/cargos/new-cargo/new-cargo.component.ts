@@ -24,7 +24,8 @@ export class NewCargoComponent implements OnInit {
     this.formCargo = formBuilder.group({
       nome: ["", [Validators.required]],
       descricao: ["", [Validators.required]],
-      salario: ["", [Validators.required]]
+      salario: ["", [Validators.required]],
+      limiteFuncionario: ["", [Validators.required]]
     })
   }
 

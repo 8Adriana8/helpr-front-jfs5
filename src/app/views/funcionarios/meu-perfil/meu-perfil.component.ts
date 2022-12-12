@@ -23,6 +23,7 @@ export class MeuPerfilComponent implements OnInit {
       nome:'',
       descricao:'',
       salario: 0,
+      limiteFuncionario: 0
     }
   };
    

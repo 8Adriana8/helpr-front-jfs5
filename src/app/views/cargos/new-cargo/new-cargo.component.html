@@ -15,6 +15,10 @@
                 <mat-label>Salario</mat-label>
                 <input type="number" name="salario" matInput formControlName="salario" >
             </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Limite de funcionários com esse cargo</mat-label>
+                <input type="number" name="limiteFuncionario" matInput formControlName="limiteFuncionario" >
+            </mat-form-field>
             
 
             <button type="submit" mat-raised-button color="primary" (click)="create()">Cadastrar</button>

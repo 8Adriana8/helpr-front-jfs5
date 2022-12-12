@@ -7,6 +7,7 @@ import { Observable, EMPTY } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
+import { Route } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
     ) { }
 
   public authenticate(credenciais: Credenciais): Observable<Token> {
@@ -49,4 +50,10 @@ export class AuthService {
     }
     return flag;
   }
+
+  public logOut(){
+    localStorage.clear()
+
+  }
+
 }
