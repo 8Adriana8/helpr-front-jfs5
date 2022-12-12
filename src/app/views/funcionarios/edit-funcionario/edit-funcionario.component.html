@@ -32,6 +32,10 @@
                 <input type="password" name="senha" matInput name="senha" [(ngModel)]="funcionario.senha" required>
             </mat-form-field>
 
+            <div class="half-width">
+                <input type="file" value="foto" class="upload-photo" (change)="uploadFile($event)"/>
+            </div>
+
             <button type="submit" mat-raised-button color="primary" (click)="update(formEdit)">Editar</button>
             <a type="button" mat-raised-button color="warn" routerLink="/funcionarios">Cancelar</a>
         </form>

@@ -19,6 +19,8 @@ export class EditFuncionarioComponent implements OnInit {
 
   public funcionario!: Funcionario
 
+  public isLoading: Boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private funcionarioService: FuncionarioService,
@@ -57,6 +59,22 @@ export class EditFuncionarioComponent implements OnInit {
     else {
       this.toastr.error("Dados inválidos.");
     }
+  }
+
+  public uploadFile(event: any): void {
+    this.isLoading = true; 
+
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    
+    reader.onload = () => {
+      
+      const foto = reader.result as string;
+      this.funcionario.foto = foto
+    };
+
+    this.isLoading = false;
   }
 
 }

@@ -15,3 +15,7 @@ form button {
 mat-option {
     background-color: #FFFFFFFF;
 }
+
+.half-width{
+    width: 50%;
+}
