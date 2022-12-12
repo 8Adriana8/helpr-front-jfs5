@@ -1,0 +1,33 @@
+<div class="dialog-container">
+
+    <div  class="btn-details">
+        <button mat-icon-button mat-dialog-close>
+            <i class="material-icons">close</i>
+        </button>
+    </div>
+
+    <div class="details">
+        <h3>
+            {{funcionario.nome}}
+        </h3>
+        <span class="details-funcionarios">
+            <img src="{{funcionario.foto}}" alt="">
+        </span>
+        <span class="details-funcionarios">
+            <strong>Id: </strong>{{funcionario.id}}
+        </span>
+        <span class="details-funcionarios">
+            <strong>cpf: </strong>{{funcionario.cpf}}
+        </span>
+        <span class="details-funcionarios">
+            <strong>E-mail: </strong>{{funcionario.email}}
+        </span>
+        <span class="details-funcionarios">
+            <strong>Cargo: </strong>{{funcionario.cargo.nome}}
+        </span>
+        <span class="details-funcionarios">
+            <strong>Perfil: </strong>{{funcionario.perfil}}
+        </span>
+    </div>
+
+</div>

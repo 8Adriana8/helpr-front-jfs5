@@ -4,6 +4,8 @@ import { Funcionario } from 'src/app/models/funcionario';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
+import { DetailsFuncionarioComponent } from 'src/app/components/details-funcionario/details-funcionario.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-funcionarios',
@@ -12,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FuncionariosComponent implements OnInit {
 
-  public displayedColumns: string[] = ['id', 'foto', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir'];
+  public displayedColumns: string[] = ['id', 'foto', 'nome', 'cpf', 'email', 'cargo', 'detalhes', 'editar', 'excluir'];
   public dataSource!: MatTableDataSource<Funcionario>;
   public showSpinner: boolean = false;
   
@@ -23,6 +25,7 @@ export class FuncionariosComponent implements OnInit {
   constructor(
     private FuncionarioService: FuncionarioService,
     private toastr: ToastrService,
+    private dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -38,7 +41,7 @@ export class FuncionariosComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
     });
     
-    }, 5000);
+    }, 1000);
   }
 
   public delete(id: number): void {
@@ -58,10 +61,11 @@ export class FuncionariosComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
- // loadData(){
-  //  this.showSpinner = true;
-  //  setTimeout(() => {
-  //    this.showSpinner = false;
-  //  });
-  //  }
+
+  public openDetails(funcionario: Funcionario): void{
+    this.dialog.open(DetailsFuncionarioComponent, {
+      width: "500px",
+      data: funcionario
+    });
+  }
 }
