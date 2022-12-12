@@ -16,6 +16,7 @@ export class CargosComponent implements OnInit {
 
   public displayedColumns: string[] = ['id', 'nome', 'descricao', 'salario', 'detalhes', 'editar', 'excluir'];
   public dataSource!: MatTableDataSource<Cargo>;
+  public showSpinner: boolean = false;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -30,11 +31,15 @@ export class CargosComponent implements OnInit {
     this.initializeTables()
   }
 
-  public initializeTables(){
+  public initializeTables(): void {
+    this.showSpinner = true;
+    setTimeout(() => {
     return this.cargoService.findAll().subscribe(cargos => {
       this.dataSource = new MatTableDataSource(cargos);
+      this.showSpinner = false;
       this.dataSource.paginator = this.paginator;
     })
+  }, 1000);
   }
 
   public delete(id: number): void {

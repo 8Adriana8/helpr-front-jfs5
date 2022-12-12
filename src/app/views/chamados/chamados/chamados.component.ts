@@ -17,6 +17,8 @@ export class ChamadosComponent implements OnInit {
 
   public dataSource!: MatTableDataSource<Chamado>;
 
+  public showSpinner: boolean = false;
+
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -30,10 +32,15 @@ export class ChamadosComponent implements OnInit {
   }
 
   private initializeTable(): void {
+    this.showSpinner = true;
+    setTimeout(() => {
     this.chamadoService.findAll().subscribe(chamados => {
       this.dataSource = new MatTableDataSource(chamados);
+      this.showSpinner = false;
       this.dataSource.paginator = this.paginator;
     });
+
+  }, 1000);
   }
 
   applyFilter(event: Event) {
