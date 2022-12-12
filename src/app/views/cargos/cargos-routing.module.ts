@@ -5,11 +5,13 @@ import { NewCargoComponent } from './new-cargo/new-cargo.component';
 
 const routes: Routes = [{ 
   path: '',
-    component: CargosComponent
+    component: CargosComponent,
+    title: "Cargos | Helpr"
   },
   {
     path: 'new',
-    component: NewCargoComponent
+    component: NewCargoComponent,
+    title: "Novo Cargo | Helpr"
   }
 
 ];
