@@ -12,16 +12,10 @@ form button {
     margin-right: 15px;
 }
 
-.upload-photo {
-    width: 96%;
-    padding: 10px 20px;
-    border: 1px solid rgba(160, 160, 160, 0.767);
+mat-option {
+    background-color: #FFFFFFFF;
 }
 
 .half-width{
     width: 50%;
-}
-
-mat-option {
-    background-color: #FFFFFFFF;
 }

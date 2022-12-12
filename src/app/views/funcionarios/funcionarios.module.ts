@@ -10,6 +10,7 @@ import { NewfuncionarioComponent } from './new-funcionarios/new-funcionario.comp
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { AvatarPipe } from 'src/app/pipes/avatar.pipe';
+import { EditFuncionarioComponent } from './edit-funcionario/edit-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AvatarPipe } from 'src/app/pipes/avatar.pipe';
       NewfuncionarioComponent, 
       MeuPerfilComponent,
       AvatarPipe,
+      EditFuncionarioComponent,
     
     ],
   imports: [
