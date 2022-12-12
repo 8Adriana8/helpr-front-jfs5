@@ -14,6 +14,8 @@ export class FuncionariosComponent implements OnInit {
 
   public displayedColumns: string[] = ['id', 'foto', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir'];
   public dataSource!: MatTableDataSource<Funcionario>;
+  public showSpinner: boolean = false;
+  
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -28,10 +30,15 @@ export class FuncionariosComponent implements OnInit {
   }
 
   private initializeTable(): void {
-    this.FuncionarioService.findAll().subscribe(funcionarios => {
-      this.dataSource = new MatTableDataSource(funcionarios);
-      this.dataSource.paginator = this.paginator;
+    this.showSpinner = true;
+    setTimeout(() => {
+      this.FuncionarioService.findAll().subscribe(funcionarios => {
+        this.dataSource = new MatTableDataSource(funcionarios);
+        this.showSpinner = false;
+        this.dataSource.paginator = this.paginator;
     });
+    
+    }, 5000);
   }
 
   public delete(id: number): void {
@@ -51,4 +58,10 @@ export class FuncionariosComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+ // loadData(){
+  //  this.showSpinner = true;
+  //  setTimeout(() => {
+  //    this.showSpinner = false;
+  //  });
+  //  }
 }
