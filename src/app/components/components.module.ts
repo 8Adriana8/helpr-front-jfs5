@@ -9,6 +9,7 @@ import { FuturoCandidatoComponent } from './futuro-candidato/futuro-candidato.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { FuturoClienteComponent } from './futuro-cliente/futuro-cliente.component';
 import { DetailsChamadoComponent } from './details-chamado/details-chamado.component';
+import { DetailsFuncionarioComponent } from './details-funcionario/details-funcionario.component';
 
 
 
@@ -19,7 +20,8 @@ import { DetailsChamadoComponent } from './details-chamado/details-chamado.compo
     DetailsCargoComponent,
     FuturoClienteComponent,
     FuturoCandidatoComponent,
-    DetailsChamadoComponent
+    DetailsChamadoComponent,
+    DetailsFuncionarioComponent
 
   ],
   imports: [
