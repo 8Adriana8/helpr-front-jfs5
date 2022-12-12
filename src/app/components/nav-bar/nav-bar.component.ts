@@ -13,7 +13,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class NavBarComponent implements OnInit {
 
-  public checked!: boolean;
+  public checked: boolean = localStorage.getItem("theme") === "true";
 
   constructor(
     private themeService: ThemeService,

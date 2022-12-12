@@ -16,6 +16,7 @@ export class ThemeService {
 
   updateData(data: boolean){
     this.dataObs.next(data);
+    localStorage.setItem("theme", data.toString())
   }
 
 }
