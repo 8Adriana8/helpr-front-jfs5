@@ -1,6 +1,9 @@
 
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -14,13 +17,16 @@ export class NavBarComponent implements OnInit {
 
   constructor(
     private themeService: ThemeService,
+    private authService: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
   }
 
   public logout(): void {
-    // LOGOUT
+    this.authService.logOut();
+    this.router.navigate(["/login"]);
   }
 
   public onDarkModeSwitched(){
