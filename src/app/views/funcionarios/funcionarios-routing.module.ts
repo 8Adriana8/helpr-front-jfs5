@@ -8,15 +8,18 @@ import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 const routes: Routes = [
   {
     path: '',
-    component: FuncionariosComponent
+    component: FuncionariosComponent,
+    title: "Funcionários | Helpr"
   },
   {
     path: 'new',
-    component: NewfuncionarioComponent
+    component: NewfuncionarioComponent,
+    title: "Novo Funcionário | Helpr"
   },
   {
     path: 'perfil',
-    component: MeuPerfilComponent
+    component: MeuPerfilComponent,
+    title: "Perfil Funcionário | Helpr"
   },
 ];
 
