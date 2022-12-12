@@ -62,7 +62,17 @@ export class FuncionarioService {
   }
 
   public update(funcionario: Funcionario): Observable<Funcionario> {
-    return this.http.put<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${funcionario.id}`, funcionario).pipe(
+    const data = {
+      nome: funcionario.nome,
+      email: funcionario.email,
+      cpf: funcionario.cpf,
+      senha: funcionario.senha,
+      perfil: funcionario.perfil,
+      foto: funcionario.foto,
+      idCargo: funcionario.cargo.idCargo
+    }
+
+    return this.http.put<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${funcionario.id}`, data).pipe(
       catchError(error => {
         alert("Erro ao editar funcionario.");
         console.error(error);

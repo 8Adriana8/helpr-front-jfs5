@@ -1,0 +1,43 @@
+<app-nav-bar>
+    <ng-container>
+        <h2>Editar funcionario</h2>
+        <form #formEdit="ngForm">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input type="text" name="nome" matInput placeholder="Ex. Gabriel Braga" [(ngModel)]="funcionario.nome" required>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>CPF</mat-label>
+                <input type="text" name="cpf" matInput placeholder="Ex. 000.000.000-00" [(ngModel)]="funcionario.cpf" required>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input type="email" name="email" matInput placeholder="Ex. gabriel@mail.com" [(ngModel)]="funcionario.email" required email>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label><strong> Cargo: {{funcionario.cargo.nome}} </strong></mat-label>
+                <mat-select [(value)]="funcionario.cargo" name="cargo">
+                    <mat-option *ngFor="let cargo of cargo" [value]="cargo">
+                        {{ cargo.nome }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Perfil</mat-label>
+                <input disabled type="text" name="perfil" matInput [(ngModel)]="funcionario.perfil">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input type="password" name="senha" matInput name="senha" [(ngModel)]="funcionario.senha" required>
+            </mat-form-field>
+
+            <div class="half-width">
+                <input type="file" value="foto" class="upload-photo" (change)="uploadFile($event)"/>
+            </div>
+
+            <button type="submit" mat-raised-button color="primary" (click)="update(formEdit)">Editar</button>
+            <a type="button" mat-raised-button color="warn" routerLink="/funcionarios">Cancelar</a>
+        </form>
+    </ng-container>
+</app-nav-bar>

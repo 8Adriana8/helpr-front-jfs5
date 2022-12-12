@@ -2,7 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { FuturoCandidato, Setor, SetorMapping } from 'src/app/models/futuro-candidato';
+import { Setor, SetorMapping } from 'src/app/models/enums/setor';
+import { FuturoCandidato } from 'src/app/models/futuro-candidato';
 import { FuturoCandidatoService } from 'src/app/services/futuro-candidato.service';
 
 @Component({

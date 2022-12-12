@@ -54,3 +54,8 @@
 .material-icons {
     margin-left: 10px;
 }
+footer{
+    background: #ad8bc2;
+    background: linear-gradient(45deg, rgba(173,139,194,1) 0%, rgb(77, 18, 95) 100%);
+    display: flex;
+}

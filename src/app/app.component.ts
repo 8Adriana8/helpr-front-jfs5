@@ -9,6 +9,7 @@ import { ThemeService } from './services/theme.service';
 })
 export class AppComponent {
   title = 'helpr-front';
+ 
 
   private isDark!:boolean;
 
@@ -30,6 +31,7 @@ export class AppComponent {
       this.isDark = data;
     })
   }
-    
+  
+  }  
 
-}
+

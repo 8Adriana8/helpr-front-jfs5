@@ -18,7 +18,6 @@ export class MeuPerfilComponent implements OnInit {
     email:'',
     foto: '',
     id: 0,
-    perfil: '',
     cargo:{
       nome:'',
       descricao:'',
@@ -43,6 +42,7 @@ export class MeuPerfilComponent implements OnInit {
     if(email){
       this.funcionarioService.findByEmail(email).subscribe(funcionario => {
       this.funcionario = funcionario;
+      this.funcionario.perfil = funcionario.perfil
        console.log(this.funcionario)
       })
     }
