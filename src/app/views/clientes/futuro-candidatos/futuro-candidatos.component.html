@@ -1,12 +1,6 @@
 <app-nav-bar>
     <ng-container>
-        <div class="container-title">
-            <h2>Futuros Candidatos</h2>
-            <a mat-mini-fab color="primary" routerLink="new">
-                <i class="material-icons">add</i>
-            </a>
-        </div>
-
+        
         <mat-form-field class="full-width">
             <mat-label>Filter</mat-label>
             <input matInput (keyup)="applyFilter($event)">

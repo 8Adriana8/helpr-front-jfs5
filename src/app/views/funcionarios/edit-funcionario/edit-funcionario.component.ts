@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Cargo } from 'src/app/models/cargo';
-import { Perfil, PerfilMapping } from 'src/app/models/enums/perfil';
 import { Funcionario } from 'src/app/models/funcionario';
 import { CargoService } from 'src/app/services/cargo.service';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
