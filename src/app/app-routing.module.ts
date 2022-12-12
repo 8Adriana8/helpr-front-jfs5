@@ -25,13 +25,13 @@ const routes: Routes = [
   {
     path: 'clientes',
     loadChildren: () => import('./views/clientes/clientes.module').then(m => m.ClientesModule),
-    canActivate: [ FuncionarioGuard ],
+    canActivate: [ AuthGuard, FuncionarioGuard ],
     title: "Clientes | Helpr"
   },
   {
     path: 'chamados',
     loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule),
-    canActivate: [ FuncionarioGuard ],
+    canActivate: [ AuthGuard, FuncionarioGuard ],
     title: "Chamados | Helpr"
   },
   {
@@ -42,13 +42,13 @@ const routes: Routes = [
   {
     path: 'cargos', 
     loadChildren: () => import('./views/cargos/cargos.module').then(m => m.CargosModule),
-    canActivate: [ AdminGuard ],
+    canActivate: [ AuthGuard, AdminGuard ],
     title: "Cargos | Helpr"
   },
   {
     path: 'funcionarios',
     loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule),
-    canActivate: [ AdminGuard ],
+    canActivate: [ AuthGuard, AdminGuard ],
     title: "Funcionários | Helpr"
   }
 
