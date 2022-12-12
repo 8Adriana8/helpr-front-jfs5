@@ -1,0 +1,30 @@
+.home-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+}
+
+.texto-home{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    width: 70vh;
+
+}
+
+.img-home{
+    display: flex;
+    flex-direction:column;
+    width: 70vh;
+}
+
+.h1{
+    font-size: xx-large;
+    font-family: sans-serif;
+}
