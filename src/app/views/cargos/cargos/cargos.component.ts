@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
 import { DetailsCargoComponent } from 'src/app/components/details-cargo/details-cargo.component';
 import { Cargo } from 'src/app/models/cargo';
 import { CargoService } from 'src/app/services/cargo.service';
@@ -21,7 +22,8 @@ export class CargosComponent implements OnInit {
 
   constructor(
     private cargoService: CargoService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
     ) { }
 
   ngOnInit(): void {
@@ -35,7 +37,12 @@ export class CargosComponent implements OnInit {
     })
   }
 
-  public delete(id: number): void {}
+  public delete(id: number): void {
+    this.cargoService.delete(id).subscribe(() => {
+      this.toastr.success("Cargo deletado com sucesso")
+      this.initializeTables()
+    })
+  }
 
   public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
