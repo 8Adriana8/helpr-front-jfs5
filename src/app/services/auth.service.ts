@@ -32,7 +32,8 @@ export class AuthService {
 
         localStorage.setItem("token", token.accessToken);
         localStorage.setItem("email", credenciais.email);
-        localStorage.setItem("perfil", role)
+        localStorage.setItem("perfil", role);
+        localStorage.setItem("theme", "true")
       }),
       catchError(error => {
         this.toastr.error("Erro ao autenticar!");
